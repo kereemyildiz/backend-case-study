@@ -6,10 +6,8 @@ import com.dreamgames.casestudy.demo.entity.User;
 import com.dreamgames.casestudy.demo.repository.UserRepository;
 import com.dreamgames.casestudy.demo.service.IUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

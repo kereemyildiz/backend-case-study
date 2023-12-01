@@ -1,6 +1,8 @@
 package com.dreamgames.casestudy.demo.entity;
 
+import com.dreamgames.casestudy.demo.constant.GameLogicConstants;
 import com.dreamgames.casestudy.demo.enums.Country;
+import com.dreamgames.casestudy.demo.util.UserUtility;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,11 +24,10 @@ public class User {
     private Country country;
 
     public User(String username) {
-        // TODO: FIX MAGICAL INITIALIZATION
         this.username = username;
-        this.level = 1;
-        this.coins = 5000;
-        this.country = Country.TURKEY;
+        this.level = GameLogicConstants.STARTING_LEVEL;
+        this.coins = GameLogicConstants.INITIAL_COIN_COUNT;
+        this.country = UserUtility.chooseRandomCountry();
     }
 
 
