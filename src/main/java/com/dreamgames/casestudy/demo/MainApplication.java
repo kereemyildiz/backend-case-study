@@ -1,4 +1,4 @@
-package com.dreamgamescasestudy.demo;
+package com.dreamgames.casestudy.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
