@@ -3,6 +3,7 @@ package com.dreamgames.casestudy.demo.controller;
 
 import com.dreamgames.casestudy.demo.dto.ProgressData;
 import com.dreamgames.casestudy.demo.entity.User;
+import com.dreamgames.casestudy.demo.exceptions.UserAlreadyExistsException;
 import com.dreamgames.casestudy.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,8 +19,9 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestParam String username) {
+//
+        return new ResponseEntity<User>(userService.createUser(username), HttpStatus.CREATED);
 
-            return new ResponseEntity<User>(userService.createUser(username), HttpStatus.CREATED);
 
     }
 
