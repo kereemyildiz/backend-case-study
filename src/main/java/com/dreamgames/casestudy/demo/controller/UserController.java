@@ -19,7 +19,7 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestParam String username) {
-//
+
         return new ResponseEntity<User>(userService.createUser(username), HttpStatus.CREATED);
 
 
