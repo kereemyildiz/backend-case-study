@@ -1,6 +1,5 @@
 package com.dreamgames.casestudy.demo.entity;
 
-import com.dreamgames.casestudy.demo.constant.GameLogicConstants;
 import com.dreamgames.casestudy.demo.enums.Country;
 import com.dreamgames.casestudy.demo.util.UserUtility;
 import jakarta.persistence.*;
@@ -24,12 +23,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Country country;
 
-    public User(String username) {
-        this.username = username;
-        this.level = GameLogicConstants.STARTING_LEVEL;
-        this.coins = GameLogicConstants.INITIAL_COIN_COUNT;
-        this.country = UserUtility.chooseRandomCountry();
+
+    public User(String username, int level, int coins, Country country) {
+            this.username = username;
+            this.level = level;
+            this.coins = coins;
+            this.country = country;
     }
-
-
 }

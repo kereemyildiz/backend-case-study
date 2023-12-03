@@ -1,0 +1,18 @@
+# Game Logic Config
+game:
+  startingLevel: 1
+  initialCoinCount: 5000
+  coinsPerLevel: 25
+
+# Database Config
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update

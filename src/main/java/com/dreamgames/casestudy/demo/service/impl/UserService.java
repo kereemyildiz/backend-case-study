@@ -1,13 +1,14 @@
 package com.dreamgames.casestudy.demo.service.impl;
 
 
-import com.dreamgames.casestudy.demo.constant.GameLogicConstants;
+import com.dreamgames.casestudy.demo.config.GameLogicConfig;
 import com.dreamgames.casestudy.demo.dto.ProgressData;
 import com.dreamgames.casestudy.demo.entity.User;
 import com.dreamgames.casestudy.demo.exceptions.UserAlreadyExistsException;
 import com.dreamgames.casestudy.demo.exceptions.UserNotFoundException;
 import com.dreamgames.casestudy.demo.repository.UserRepository;
 import com.dreamgames.casestudy.demo.service.IUserService;
+import com.dreamgames.casestudy.demo.util.UserUtility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements IUserService {
 
+    private final GameLogicConfig gameLogicConfig;
+
     private final UserRepository userRepository;
     @Override
     public User createUser(String username) {
@@ -24,7 +27,11 @@ public class UserService implements IUserService {
             throw new UserAlreadyExistsException("User already exists with username: " + username);
         }
 
-        User newUser = new User(username);
+        User newUser = new User(username,
+                gameLogicConfig.getStartingLevel(),
+                gameLogicConfig.getInitialCoinCount(),
+                UserUtility.chooseRandomCountry());
+
         return userRepository.save(newUser);
     }
 
@@ -37,7 +44,7 @@ public class UserService implements IUserService {
         int levelBeforeUpdate = user.getLevel();
         int coinsBeforeUpdate = user.getCoins();
         user.setLevel(levelBeforeUpdate + 1);
-        user.setCoins(coinsBeforeUpdate + GameLogicConstants.COINS_PER_LEVEL);
+        user.setCoins(coinsBeforeUpdate + gameLogicConfig.getCoinsPerLevel());
         userRepository.save(user);
 
         return new ProgressData(userId, levelBeforeUpdate, coinsBeforeUpdate, user.getLevel(), user.getCoins());
