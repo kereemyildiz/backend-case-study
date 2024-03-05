@@ -22,7 +22,6 @@ public class UserController {
 
         return new ResponseEntity<User>(userService.createUser(username), HttpStatus.CREATED);
 
-
     }
 
     @PutMapping("/{userId}/updateLevel")

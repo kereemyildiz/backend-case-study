@@ -12,6 +12,7 @@ import com.dreamgames.casestudy.demo.util.UserUtility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
 
 @Service
@@ -49,5 +50,11 @@ public class UserService implements IUserService {
 
         return new ProgressData(userId, levelBeforeUpdate, coinsBeforeUpdate, user.getLevel(), user.getCoins());
 
+    }
+
+    @Override
+    public boolean isUserEligibleToJoin(Long userId) {
+        Optional<User> user = userRepository.findById(userId); // we already check user's existence.
+        return user.get().getCoins() >= 1000 && user.get().getLevel() >= 20;
     }
 }

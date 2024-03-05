@@ -4,6 +4,11 @@ game:
   initialCoinCount: 5000
   coinsPerLevel: 25
 
+
+tournament:
+  startTime: "00:00"
+  endTime: "20:00"
+
 # Database Config
 spring:
   datasource:

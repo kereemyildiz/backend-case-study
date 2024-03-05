@@ -1,7 +1,6 @@
 package com.dreamgames.casestudy.demo.entity;
 
 import com.dreamgames.casestudy.demo.enums.Country;
-import com.dreamgames.casestudy.demo.util.UserUtility;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Country country;
+
+    private boolean inTournament=false;
+    private boolean isClaimed=true;
 
 
     public User(String username, int level, int coins, Country country) {

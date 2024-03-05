@@ -10,4 +10,10 @@ public class AppConfig {
     public GameLogicConfig gameLogicConfig() {
         return new GameLogicConfig();
     }
+    @Bean
+    public TournamentConfig tournamentConfig() {
+        return new TournamentConfig();
+    }
+
+
 }
